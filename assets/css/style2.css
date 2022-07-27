@@ -27,6 +27,8 @@ main {
     background-size: cover;
     background-repeat: no-repeat;
     height: 100vh;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .overlay {
@@ -51,7 +53,6 @@ main {
     top: 0;
     left: 0;
     z-index: 3;
-    /* background-color:rgba(17, 17, 17, 0.503); */
     transform: translateY(100%);
     display: flex;
     flex-direction: column;
@@ -106,20 +107,11 @@ main {
     color: #FFFFFF;
     border: solid 4px #225762;
     position: fixed;
-    top: 100px;
+    top: 0;
+    font-size: 2rem;
     left: 20px;
     z-index: 2;
     text-decoration: none;
-}
-
-.stats input {
-    background-color: #589595;
-    color: #FFFFFF;
-    border: solid 4px #225762;
-    position: fixed;
-    top: 0;
-    left: 20px;
-    z-index: 2;
 }
 
 .reset input {
@@ -216,8 +208,8 @@ iframe {
     margin-top: 1rem;
     padding: 1rem 2rem;
     font-size: 2rem;
-    background-color: rgb(117, 25, 25);
-    border: 3px solid rgb(69, 14, 14);
+    background-color: #589595;
+    border: 3px solid #225762;
     color: #f1f1f1;
     border-radius: 15px;
     opacity: 0;
@@ -233,20 +225,24 @@ iframe {
     background-color: #589595;
 }
 
-.playerChoice {
-    height: 50vh;
-    width: 80%;
-    margin-left: 10%;
+.player1Choice,
+.player2Choice {
+    height: 30vh;
+    width: 40%;
+    margin: 0 5%;
     display: flex;
     justify-content: space-around;
     align-items: center;
+    flex-wrap: wrap;
 }
 
-.playerChoice div {
+.player1Choice div,
+.player2Choice div {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    width: 33%;
 }
 
 input, a {
@@ -257,6 +253,13 @@ input, a {
     color: #FFFFFF;
     border: solid 4px #225762;
     border-radius: 15px;
+}
+
+.answer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
 }
 
 .answer div{
@@ -273,6 +276,9 @@ img {
 
 .answerImg {
     display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
     opacity: 1;
 }
 
@@ -291,58 +297,14 @@ img {
     z-index: 2;
 }
 
-#playerChoiceMain {
-    background-image: linear-gradient(to top, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.4)), url('../img/cafeteria.webp');
-    background-position: center;
-    background-size: cover;
-    position: absolute;
-    height: 100vh;
-    width: 100%;
-    top: 0;
-    left: 0;
-    z-index: 3;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-#playerChoiceMain.active {
-    animation: overlayOut 0.8s ease-out forwards;
-}
-
-.chooseYourPlayerContainer {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    flex-wrap: wrap;
-    width: 100%;
-}
-
-.chooseYourPlayer {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    border: 4px solid #225762;
-    background-color: #589595;
-    object-fit: cover;
-}
-
-.choiceMessage {
-    color: #f1f1f1f1;
-    font-size: 5rem;
-    font-weight: 900;
-    margin-bottom: 3rem;
-}
-
 @media (max-width: 600px) {
     main {
         height: 95vh;
     }
 
     img {
-        height: 80px;
-        width: 80px;
+        height: 50px;
+        width: 50px;
     }
 
     iframe {
@@ -389,33 +351,20 @@ img {
         width: 65%;
     }
 
-    .stats a, .stats input, .rules input {
+    .stats a, .rules input {
         padding-bottom: 0.5rem;
         margin: 1rem;
     }
 
-    input, a {
+    input, .stats a {
         font-size: 1rem;
-    }
-
-    .chooseYourPlayer {
-        width: 50;
-        height: 50;
-    }
-
-    .choiceMessage {
-        font-size: 1.5rem;
-    }
-
-    .stats a {
-        top: 60px;
     }
 }
 
 @media (orientation: landscape) {
     img {
-        width: 100px;
-        height: 100px;
+        width: 60px;
+        height: 60px;
     }
 
     input, a {
@@ -455,7 +404,7 @@ img {
         margin-top: 3rem;
     }
 
-    .stats a, .stats input, .rules input, .reset input{
+    .stats a, .rules input, .reset input{
         font-size: 1.5rem;
     }
 
@@ -492,4 +441,48 @@ img {
     .computerChoice div {
         font-size: 3rem;
     }
+}
+
+#playerChoiceMain {
+    background-image: linear-gradient(to top, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.4)), url('../img/cafeteria.webp');
+    background-position: center;
+    background-size: cover;
+    position: absolute;
+    height: 100vh;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#playerChoiceMain.active {
+    animation: overlayOut 0.8s ease-out forwards;
+}
+
+.chooseYourPlayerContainer {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.chooseYourPlayer {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 4px solid #225762;
+    background-color: #589595;
+    object-fit: cover;
+}
+
+.choiceMessage {
+    color: #f1f1f1f1;
+    font-size: 5rem;
+    font-weight: 900;
+    margin-bottom: 3rem;
 }
