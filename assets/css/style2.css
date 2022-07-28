@@ -388,11 +388,16 @@ img {
 
 @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : portrait) {
     img {
-        width: 150px;
-        height: 150px;
+        width: 100px;
+        height: 100px;
         margin: 1rem;
     }
 
+    .stats a {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
     input, a {
         width: 200px;
         height: 70px;
@@ -420,6 +425,16 @@ img {
     .playerChoice {
         height: 40vh;
         flex-wrap: wrap;
+    }
+
+    .player1Choice, .player2Choice {
+        margin: 0;
+    }
+
+    main {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
     }
 }
 
